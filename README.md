@@ -1,115 +1,56 @@
-# 🦙 OTT Support Assistant — Ollama Edition (100% Local)
 
-Bilingual (English/Arabic) OTT customer support powered by **Ollama llama3** running entirely on your machine. **No cloud AI costs!**
 
----
+- 📁 **3 separate projects**: `ott-support-openai`, `ott-support-gemini`, `ott-support-ollama`
+- 🤖 **Ollama**: llama3 (runs 100% locally, no API cost!)
+- 🎙️ **Voice**: Whisper + gTTS for all 3 (consistent experience)
+- 🗄️ **All use**: SQLite + Google Sheets + Streamlit UI
 
-## 🛠️ Tech Stack
-| Component | Technology |
-|-----------|-----------|
-| AI Chat | Ollama llama3 (local) |
-| Voice Transcription | OpenAI Whisper |
-| Text-to-Speech | gTTS |
-| UI | Streamlit |
-| Database | SQLite |
-| Cloud Sync | Google Sheets API |
+Building all 3 now...Good. Now building all unique files for each project:Now building the Ollama project:Now create READMEs and zip everything:Both projects are ready! Here's your complete picture across all 3 projects:
 
 ---
 
-## ⚙️ Install Ollama First
+## 📦 What You Now Have
 
-### macOS / Linux
-```bash
-curl -fsSL https://ollama.com/install.sh | sh
-```
-
-### Windows
-Download from [https://ollama.com/download](https://ollama.com/download)
-
-### Pull llama3 model
-```bash
-ollama pull llama3
-```
-> This downloads ~4.7GB. Only needed once.
-
-### Start Ollama server
-```bash
-ollama serve
-```
-> Keep this running in a terminal while using the app.
+| | OpenAI | Gemini | Ollama |
+|---|---|---|---|
+| **Chat AI** | GPT-4o | Gemini 2.0 Flash | llama3 (local) |
+| **Transcription** | Whisper | Whisper | Whisper |
+| **TTS** | gTTS | gTTS | gTTS |
+| **Cost** | Paid API | Free tier available | **Free (local)** |
+| **Internet needed** | Yes | Yes | Chat: No, Voice: Yes |
+| **API keys needed** | OpenAI | Gemini + OpenAI | OpenAI (Whisper only) |
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start for Each
 
+**Gemini:**
 ```bash
-# 1. Clone & install
-git clone https://github.com/YOUR_USERNAME/ott-support-ollama.git
-cd ott-support-ollama
-python -m venv venv && source venv/bin/activate  # Windows: venv\Scripts\activate
+cd ott-support-gemini
 pip install -r requirements.txt
+cp .env.example .env  # add GEMINI_API_KEY
+streamlit run app.py
+```
+Get your free Gemini key at: `aistudio.google.com/app/apikey`
 
-# 2. Configure
-cp .env.example .env
-# Edit .env — add OPENAI_API_KEY (for Whisper), GOOGLE_SHEET_ID
+**Ollama (fully local chat):**
+```bash
+# One-time setup
+ollama pull llama3     # downloads ~4.7GB
+ollama serve           # keep running
 
-# 3. Start Ollama (separate terminal)
-ollama serve
-
-# 4. Run app
+cd ott-support-ollama
+pip install -r requirements.txt
+cp .env.example .env   # only needs OPENAI_API_KEY for Whisper
 streamlit run app.py
 ```
 
 ---
 
-## 🔄 Switching Models
-
-You can use any Ollama model by changing `.env`:
-```
-OLLAMA_MODEL=llama3        # recommended
-OLLAMA_MODEL=mistral       # smaller, faster
-OLLAMA_MODEL=gemma2        # Google's model
-OLLAMA_MODEL=phi3          # Microsoft's model
-```
-
-Then pull the model: `ollama pull mistral`
-
----
-
-## 🔑 API Keys Needed
-
-| Key | Purpose |
-|-----|---------|
-| `OPENAI_API_KEY` | Whisper voice transcription only |
-| `GOOGLE_SHEET_ID` | Google Sheets sync (optional) |
-
-> The chat itself uses **zero external API calls** — llama3 runs 100% locally!
-
----
-
-## 📊 Google Sheets Setup
-See the original OpenAI project README for full Google Sheets setup steps.
-The process is identical for all three projects.
-
----
-
-## 💻 System Requirements for llama3
-
-| Resource | Minimum | Recommended |
-|----------|---------|-------------|
-| RAM | 8 GB | 16 GB |
-| Disk | 5 GB | 10 GB |
-| CPU | Modern 4-core | 8+ cores |
-| GPU | Optional | NVIDIA/AMD GPU for faster responses |
-
----
-
-## 🐙 Push to GitHub
-
+## 🐙 3 Separate GitHub Repos
 ```bash
-git init && git add . && git commit -m "OTT Support - Ollama Edition"
-git remote add origin https://github.com/YOUR_USERNAME/ott-support-ollama.git
-git push -u origin main
+# Push each as its own repo
+cd ott-support-openai  → github.com/YOU/ott-support-openai
+cd ott-support-gemini  → github.com/YOU/ott-support-gemini
+cd ott-support-ollama  → github.com/YOU/ott-support-ollama
 ```
-
-> ⚠️ Never commit `.env` or `credentials.json`

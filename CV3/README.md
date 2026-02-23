@@ -1,4 +1,4 @@
-# 🎬 OTT Support API — FastAPI Backend + Floating Chat Widget
+# Support API — FastAPI Backend + Floating Chat Widget
 
 A production-ready AI customer support API for OTT platforms with a dark floating chat bubble
 that embeds into **any website with a single `<script>` tag**.

@@ -234,3 +234,61 @@ git commit -m "OTT Support API — FastAPI + Floating Chat Widget"
 git remote add origin https://github.com/YOUR_USERNAME/ott-support-api.git
 git push -u origin main
 ```
+
+
+ ElevenLabs fully supports Arabic**, and it's actually significantly better than gTTS for Arabic
+
+---
+
+## ElevenLabs Arabic Support (2025)
+
+### 🔊 Text-to-Speech (Arabic voices)
+ElevenLabs supports **Arabic (Saudi Arabia, UAE)** across its Multilingual v2 and Eleven v3 models. And there's a large library of Arabic voices available — Egyptian, Gulf, Modern Standard Arabic, Moroccan Darija — both male and female, for different use cases like narration, customer service, podcasts, and storytelling.
+
+### 🎙️ Speech-to-Text (Arabic transcription)
+ElevenLabs' **Scribe** model supports Arabic transcription across multiple dialects including Modern Standard Arabic, Egyptian, Levantine, Gulf, and Maghrebi.
+
+### 🤖 Conversational AI (Real-time voice agent)
+ElevenLabs Conversational AI supports **automatic language detection and seamless in-conversation switching across 32+ languages**, with sub-100ms latency. Conversational AI 2.0 introduced automatic language detection directly into the agent, allowing it to identify the language being spoken and respond appropriately within the same interaction — enabling seamless multilingual discussions without manual configuration.
+
+---
+
+## 📊 ElevenLabs vs gTTS for Arabic
+
+| Feature | gTTS (current) | ElevenLabs |
+|---|---|---|
+| **Arabic TTS quality** | Basic, robotic | Human-like, expressive |
+| **Arabic dialects** | MSA only | Egyptian, Gulf, Levantine, MSA |
+| **Real-time STT** | ❌ (uses Whisper) | ✅ Scribe (99 languages) |
+| **Conversational AI** | ❌ | ✅ Full voice agent platform |
+| **Auto language detect** | ❌ | ✅ Built-in |
+| **Latency** | ~2-3 sec | Sub-100ms (Flash model) |
+| **Voice cloning** | ❌ | ✅ |
+| **Cost** | Free | Paid (free tier: 10k chars/month) |
+| **API** | Simple | Full SDK (Python, JS, Swift) |
+
+---
+
+## 🚀 What This Means for Your OTT Project
+
+You could replace gTTS with ElevenLabs to get a **dramatically better Arabic voice experience**:
+
+```python
+# Current (gTTS) — robotic, basic
+tts = gTTS(text=reply, lang="ar")
+
+# With ElevenLabs — human-like, natural Arabic
+from elevenlabs import ElevenLabs
+client = ElevenLabs(api_key="your_key")
+audio = client.text_to_speech.convert(
+    text=reply,
+    voice_id="arabic_voice_id",   # pick from their Arabic voice library
+    model_id="eleven_multilingual_v2"
+)
+```
+
+Or even better — use **ElevenLabs Conversational AI** which handles the entire loop (mic → STT → LLM → TTS → speaker) as a single real-time WebSocket connection, replacing your current Web Speech API + gTTS setup entirely.
+
+---
+
+Would you like me to upgrade the project to use **ElevenLabs** instead of gTTS for the Arabic TTS, or go further and integrate the full **ElevenLabs Conversational AI** platform for a true real-time voice agent?
